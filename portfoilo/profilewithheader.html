@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gagan | CSE Student Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #3b82f6;
+      --accent: #60a5fa;
+      --dark: #1e3a8a;
+      --light: #f0f9ff;
+      --text: #1f2937;
+      --text-light: #6b7280;
+    }
+    
+    * {
+      margin: 0;
+
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: white;
+      padding: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, white, #e0f2fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .hero {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-pic:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, white, #e0f2fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    
+    section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    section h2 {
+      color: var(--dark);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 4px;
+    }
+    
+    article {
+      margin-bottom: 2rem;
+    }
+    
+    article h3 {
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    
+    article p {
+      color: var(--text-light);
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .skill {
+      background: var(--light);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .skill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+      background: var(--primary);
+      color: white;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .project-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--primary);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+    }
+    
+    .project-card h3 {
+      color: var(--dark);
+      margin-bottom: 0.8rem;
+    }
+    
+    .project-card p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .project-links a {
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .code-link {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .demo-link {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .project-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(59, 130, 246, 0.2);
+    }
+    
+    .education-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .education-table th, 
+    .education-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .education-table th {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 500;
+    }
+    
+    .education-table tr:nth-child(even) {
+      background-color: var(--light);
+    }
+    
+    .education-table tr:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+    
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1e3a8a);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-5px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">My profile</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    
+    <div class="hero">
+      <img src="https://www.marthastewart.com/thmb/qq94YZhTQ4zz7jwRbkn4OfUb4Tc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/blooming-azalea-plant-getty-1221-2000-65bfc3a5812c4286a2c22aeeddd491f6.jpg" alt="Profile Picture" class="profile-pic">
+      <div class="hero-text">
+        <h1>Gagaandeep Kaur</h1>
+        <p>Passionate about coding, problem solving, and building innovative solutions</p>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <article>
+        <p>I am a passionate second-year Computer Science Engineering student with strong problem-solving skills and a love for building software. Proficient in C++ and Python, I enjoy working on projects that challenge my abilities and spark creativity.</p>
+        <p>My journey in programming began with simple "Hello World" programs and has evolved into developing complete applications and algorithms. I'm constantly learning new technologies and frameworks to expand my skill set.</p>
+      </article>
+    </section>
+    
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <article>
+        <div class="skills-container">
+         <div class="skill">C Programming</div>
+          <div class="skill">C++ Programming</div>
+          <div class="skill">Python</div>
+          <div class="skill">Data Structures</div>
+          <div class="skill">Algorithms</div>
+          <div class="skill">Problem Solving</div>
+          <div class="skill">HTML</div>
+          <div class="skill">Git & GitHub</div>
+          <div class="skill">Command Line</div>
+          <div class="skill">Debugging</div>
+        </div>
+      </article>
+    </section>
+    
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>Tic Tac Toe AI</h3>
+          <p>A terminal-based game with unbeatable AI using minimax algorithm and alpha-beta pruning in Python.</p>
+          <div class="project-links">
+            <a href="#" class="code-link">View Code</a>
+            <a href="#" class="demo-link">Live Demo</a>
+          </div>
+        </article>
+        
+        <article class="project-card">
+          <h3>Scientific Calculator</h3>
+          <p>Feature-rich calculator with GUI in Python supporting basic and scientific operations.</p>
+          <div class="project-links">
+            <a href="#" class="code-link">View Code</a>
+            <a href="#" class="demo-link">Live Demo</a>
+          </div>
+        </article>
+        
+        <article class="project-card">
+          <h3>Student Management System</h3>
+          <p>C++ & Python console application to manage student records with file handling for data persistence.</p>
+          <div class="project-links">
+            <a href="#" class="code-link">View Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <section id="education">
+      <h2>Education</h2>
+      <article>
+        <table class="education-table">
+          <tr>
+            <th>Level</th>
+            <th>Institution</th>
+            <th>Year</th>
+            <th>Percentage / Grade</th>
+          </tr>
+          <tr>
+            <td>10th </td>
+            <td>Sacred Heart Convent School Samrala </td>
+            <td>2022</td>
+            <td>92%</td>
+          </tr>
+          <tr>
+            <td>12th </td>
+            <td>Sacred Heart Convent School Samrala</td>
+            <td>2024</td>
+            <td>86%</td>
+          </tr>
+          <tr>
+            <td>B.Tech CSE</td>
+            <td>Guru Nanak Dev Engineering College Ludhiana </td>
+            <td>2024-2028</td>
+            <td>Current CGPA: X.XX</td>
+          </tr>
+        </table>
+      </article>
+    </section>
+  </main>
+  
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Get In Touch</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <span>Ludhiana, India</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>My Profiles</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <a href="https://github.com/gagaanbatth/gagaanbatth.github.ioe" target="_blank">github.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <a href="https://www.linkedin.com/in/gagaandeep-kaur-09b214319?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">linkedin.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-code"></i>
+            </div>
+      </div>
+    <div class="copyright">
+      &copy; 2025 Gag'an's Portfolio. All Rights Reserved.
+      Name: Gagaandeep Kaur,
+      URN:2434966,
+      Branch: CSE
+    </div>
+  </footer>
+</body>
+</html>
